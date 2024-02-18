@@ -32,3 +32,5 @@ def say_hello():
 
 # Calling the decorated function
 say_hello()
+
+print("hello_world")
