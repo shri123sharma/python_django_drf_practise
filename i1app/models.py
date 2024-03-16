@@ -37,5 +37,12 @@ class Customer(models.Model):
     def __str__(self):
         return self.name
     
+class Music(models.Model):
+    name=models.CharField(max_length=255,null=True,blank=True)
+    launch_date=models.DateTimeField(null=True,blank=True)
+
+    def __str__(self):
+        return self.name
+    
     
     
