@@ -14,9 +14,12 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Person',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('first_name', models.CharField(blank=True, max_length=255, null=True)),
-                ('last_name', models.CharField(blank=True, max_length=255, null=True)),
+                ('id', models.BigAutoField(auto_created=True,
+                 primary_key=True, serialize=False, verbose_name='ID')),
+                ('first_name', models.CharField(
+                    blank=True, max_length=255, null=True)),
+                ('last_name', models.CharField(
+                    blank=True, max_length=255, null=True)),
             ],
         ),
     ]

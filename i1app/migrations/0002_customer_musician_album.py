@@ -14,28 +14,36 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Customer',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.BigAutoField(auto_created=True,
+                 primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=255)),
-                ('shirt_size', models.CharField(choices=[('S', 'Small'), ('M', 'Medium'), ('L', 'Large')], max_length=1)),
+                ('shirt_size', models.CharField(choices=[
+                 ('S', 'Small'), ('M', 'Medium'), ('L', 'Large')], max_length=1)),
             ],
         ),
         migrations.CreateModel(
             name='Musician',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('first_name', models.CharField(blank=True, max_length=255, null=True)),
-                ('last_name', models.CharField(blank=True, max_length=255, null=True)),
-                ('instrument', models.CharField(blank=True, max_length=255, null=True)),
+                ('id', models.BigAutoField(auto_created=True,
+                 primary_key=True, serialize=False, verbose_name='ID')),
+                ('first_name', models.CharField(
+                    blank=True, max_length=255, null=True)),
+                ('last_name', models.CharField(
+                    blank=True, max_length=255, null=True)),
+                ('instrument', models.CharField(
+                    blank=True, max_length=255, null=True)),
             ],
         ),
         migrations.CreateModel(
             name='Album',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.BigAutoField(auto_created=True,
+                 primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=255)),
                 ('release_date', models.DateField()),
                 ('num_star', models.IntegerField(default=0)),
-                ('artist', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='i1app.musician')),
+                ('artist', models.ForeignKey(
+                    on_delete=django.db.models.deletion.CASCADE, to='i1app.musician')),
             ],
         ),
     ]

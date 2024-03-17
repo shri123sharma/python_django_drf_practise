@@ -1,3 +1,6 @@
+from abc import ABC, abstractmethod
+
+
 def StringChallenge(s):
     words_to_digits = {
         'zero': '0',
@@ -30,66 +33,74 @@ def StringChallenge(s):
 
     # Check if the result is negative
     if result < 0:
-        
-        result_in_words = 'neg' + '-'.join(['-' + char + '-' for char in 'ative']) + ''.join(words_to_digits[digit] for digit in str(-result))
+
+        result_in_words = 'neg' + '-'.join(['-' + char + '-' for char in 'ative']) + ''.join(
+            words_to_digits[digit] for digit in str(-result))
     else:
-        result_in_words = ''.join(words_to_digits[digit] for digit in str(result))
+        result_in_words = ''.join(
+            words_to_digits[digit] for digit in str(result))
 
     return result_in_words
+
 
 # Test cases
 print(StringChallenge("oneminusoneone"))  # Output: neg--a--tiveonezero
 print(StringChallenge("onezeropluseight"))  # Output: oneeight
 
+
 class FileManger:
-    def __init__(self,filename,mode):
-        self.filename=filename
-        self.mode=mode
+    def __init__(self, filename, mode):
+        self.filename = filename
+        self.mode = mode
         self.file = None
-        
+
     def __enter__(self):
-        self.file=open(self.filename,self.mode)
+        self.file = open(self.filename, self.mode)
         print(f"File '{self.filename}' opened in '{self.mode}' mode.")
         return self.file
-    
-    def __exit__(self,exc_type, exc_value, traceback):
+
+    def __exit__(self, exc_type, exc_value, traceback):
         if self.file:
             self.file.close()
             print(f"File '{self.filename}' closed.")
-            
+
         if exc_type is not None:
-            print(f"An exception of type {exc_type} occurred with message: {exc_value}")
-            
+            print(
+                f"An exception of type {exc_type} occurred with message: {exc_value}")
+
         return False
-               
-file_name="context.txt"
-with FileManger(file_name,"w") as file:
+
+
+file_name = "context.txt"
+with FileManger(file_name, "w") as file:
     file.write("hello i am python developer")
 
+
 class MetaClass(type):
-    def __new__(cls,name,bases,dct):
-        dct['custom_attribute']=40
-        return super().__new__(cls,name,bases,dct)
-    
+    def __new__(cls, name, bases, dct):
+        dct['custom_attribute'] = 40
+        return super().__new__(cls, name, bases, dct)
+
+
 class MyClass(metaclass=MetaClass):
     pass
 
-obj=MyClass()
+
+obj = MyClass()
 print(obj.custom_attribute)
 
-from abc import ABC,abstractmethod
+
 class Drawable(ABC):
     @abstractmethod
     def area(self):
         return "hello this is abstract method"
-        
+
+
 class Circle(Drawable):
     # def area(self):
     #     return "hello world"
     pass
-obj1=Circle()
+
+
+obj1 = Circle()
 print(obj1.area())
-
-
-
-        
