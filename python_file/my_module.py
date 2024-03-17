@@ -111,4 +111,31 @@ print(ls2)
 print(ls3)
 
 
-pdb.set_trace()
+class MyClass:
+    class_variable = 0
+
+    def __init__(self, x):
+        self.x = x
+
+    @classmethod
+    def increment_class_variable(cls):
+        cls.class_variable += 1
+
+    def display(self):
+        print(f"Instance variable x: {self.x}")
+        print(f"Class variable class_variable: {self.class_variable}")
+
+
+# Create instances of MyClass
+obj1 = MyClass(10)
+obj2 = MyClass(20)
+
+# Call the class method using the class itself
+MyClass.increment_class_variable()
+
+# Call the class method using an instance of the class
+obj1.increment_class_variable()
+
+# Display the values of instance variable and class variable for each instance
+obj1.display()
+obj2.display()
