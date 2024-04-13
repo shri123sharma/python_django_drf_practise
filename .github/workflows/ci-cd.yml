@@ -10,6 +10,7 @@ on:
     branches:
       - first_new_branch
       - second_branch
+      - third_develop_branch
 
 jobs:
   build:
