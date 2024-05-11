@@ -7,7 +7,7 @@ from copy import deepcopy
 def func_decorator(func):
     def wrapper():
         print("this function is before calling")
-        closure = func()
+        func()
         print("this function after calling")
     return wrapper
 
@@ -142,7 +142,7 @@ print(obj1)
 
 class IndexClass(type):
     def __new__(cls, name, bases, dct):
-        print(f"this is custom meta class", name)
+        print(f"this is custom meta class{name}")
         return super().__new__(cls, name, bases, dct)
 
 
@@ -194,12 +194,9 @@ class MyClass:
     def add(self, a, b):
         return a, b
 
-    def add(self, a, b, c):
-        return a, b, c
-
 
 obj1 = MyClass()
-print(obj1.add(10, 20, 30))
+print(obj1.add(10, 20))
 
 
 class Animal:
