@@ -85,8 +85,8 @@ for j in ts1:
     print(j)
 for k in ss1:
     print(k)
-for l in ds1:
-    print(l)
+for ls in ds1:
+    print(ls)
 for m in str1:
     print(m)
 

@@ -1,3 +1,4 @@
+from array import array
 import multiprocessing
 import time
 import threading
@@ -94,7 +95,7 @@ class Person:
 
     @staticmethod
     def show_method():
-        return "this is static method"+" "+str(Person.a+Person.b*obj1.key*obj1.val)
+        return str(Person.a+Person.b*obj1.key*obj1.val)
 
 
 obj1 = Person(100, 200)
@@ -373,7 +374,7 @@ class MyPerson:
 
 obj1 = MyPerson("shrikant", 23)
 print(
-    f"This instance and class attribute-{obj1.name}-{obj1.age}-{obj1.location}")
+    f"This instance-{obj1.name}-{obj1.age}-{obj1.location}")
 print(obj1.class_method())
 print(obj1.static_method())
 
@@ -395,3 +396,182 @@ class Book:
 
 obj1 = Book
 print(obj1)
+
+number = [1, 10, 31, 24, 15, 46, 72]
+number.sort()
+print(number)
+
+number.sort(reverse=True)
+print(number)
+
+number1 = [101, 343, 4, 343, 4334, 1, 1, 232]
+number1.sort()
+print(number1)
+
+number = [1, 23, 32, 4, 565, 6, 787, 87]
+number1 = sorted(number)
+print(number1)
+
+number = [1, 2, 3, 12, 43, 56, 27, 87]
+number.sort()
+print(number)
+
+number = [332, 323, 65, 87, 7]
+n1 = sorted(number)
+print(n1)
+
+ls1 = [3, 55, 76, 88, 94222, 22, 5454323, 6, 6522]
+ls2 = sorted(ls1)
+print(ls2)
+
+t1 = (1, 2, 3, 221, 343, 545767,)
+t2 = sorted(t1)
+print(t2)
+
+ls1 = [1, 2, 3, 4]
+ls2 = [1, 2, 3, 4]
+print(ls1 == ls2)
+
+print(id(ls1))
+print(id(ls2))
+
+print(id(ls1) is id(ls2))
+
+ls1 = [1, 2, 3, 4, 5]
+ls2 = [1, 3, 2, 4, 5]
+print(ls1 == ls2)
+
+
+def print_numbers():
+    for i in range(5):
+        print(i)
+        time.sleep(1)
+
+
+def print_letters():
+    for letter in 'ABCDE':
+        print(letter)
+        time.sleep(1)
+
+
+t1 = threading.Thread(target=print_numbers)
+t2 = threading.Thread(target=print_letters)
+
+t1.start()
+t2.start()
+
+t1.join()
+t2.join()
+
+ls1_comprehension = [out for out in range(1, 10) if out % 2 == 0]
+print(ls1_comprehension)
+
+square = []
+for i in range(10):
+    square.append(i**i)
+print(square)
+
+ls1_list = [square**square for square in range(10)]
+print(ls1_list)
+
+square_dict = {}
+for i in range(10):
+    square_dict[i] = i**2
+print(square_dict)
+
+dict_comprehension = {i: i**2 for i in range(10)}
+print(dict_comprehension)
+
+set_comprehension = {i**2 for i in range(10)}
+print(type(set_comprehension))
+print(set_comprehension)
+
+gen_comprehension = (i**2 for i in range(10))
+print(gen_comprehension)
+print(next(gen_comprehension))
+
+for i in range(10):
+    if i == 6:
+        print("Found 6 it!")
+        break
+else:
+    print("Not Found the six value")
+
+
+def generator_func():
+    ls1 = []
+    for i in range(10):
+        ls1.append(i**2)
+    yield ls1
+
+
+gen_obj = generator_func()
+for val in gen_obj:
+    print(val)
+
+
+def square(num):
+    time.sleep(1)
+    return num**num
+
+
+def multiple(num):
+    time.sleep(1)
+    return num*num
+
+
+if __name__ == "__main__":
+    with multiprocessing.Pool() as pool:
+        start_time = time.time()
+        number = [1, 2, 3, 4, 5]
+        result = list(map(square, number))
+        result1 = list(map(multiple, number))
+        end_time = time.time()
+        excuation_time = end_time-start_time
+        print(result)
+        print(result1)
+        print(f"this is execuation time-{excuation_time}")
+
+
+def is_even(x): return x % 2 == 0
+
+
+for i in range(5):
+    print(is_even(i))
+
+ls1 = [1, 2, 3, 4, 5, 6, (100, 200, 300), {1, 2, 2, 2, 3, 4, 5, 6}, {
+    'name': 'user1', 'age': 23}]
+ls1.append(1)
+print(ls1)
+
+arr1 = array('i', [1, 2, 3, 4, 5])
+print(type(arr1))
+arr1.append(100)
+print(arr1)
+
+
+def func1(num):
+    sum_var = 0
+    for i in num:
+        sum_var += i
+    return sum_var
+
+
+print(func1([1, 2, 3, 4, 5, 6, 7]))
+
+
+def func(x, y):
+    try:
+        result = x/y
+    except ZeroDivisionError as e:
+        print("Zero division errors")
+    else:
+        print(f"result-{result}")
+    finally:
+        print(f"this is statement always execute")
+
+
+if __name__ == "__main__":
+    var1 = 10
+    var2 = 2
+    closure = func(var1, var2)
